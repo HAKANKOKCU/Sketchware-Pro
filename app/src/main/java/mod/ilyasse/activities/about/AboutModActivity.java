@@ -105,7 +105,7 @@ public class AboutModActivity extends AppCompatActivity {
         sharedPref = getSharedPreferences("AboutMod", Activity.MODE_PRIVATE);
 		
 		int nightModeFlags =
-			this.getContext().getResources().getConfiguration().uiMode &
+			this.getResources().getConfiguration().uiMode &
 				android.content.res.Configuration.UI_MODE_NIGHT_MASK;
 			switch (nightModeFlags) {
 				case android.content.res.Configuration.UI_MODE_NIGHT_YES:
@@ -116,7 +116,7 @@ public class AboutModActivity extends AppCompatActivity {
 					((TextView)findViewById(R.id.tv_loading_desc)).setTextColor(0xFFFFFFFF);
 					((TextView)findViewById(R.id.tv_title)).setTextColor(0xFFFFFFFF);
 					((LinearLayout)findViewById(R.id.layout2)).setBackgroundColor(0xFF000000);
-					back.setColorFilter(ContextCompat.getColor(getContext(), 0xFFFFFFFF));
+					back.setColorFilter(ContextCompat.getColor(this, 0xFFFFFFFF));
 					break;
 
 				case android.content.res.Configuration.UI_MODE_NIGHT_NO:
