@@ -117,7 +117,7 @@ public class AboutModActivity extends AppCompatActivity {
 					((TextView)findViewById(R.id.tv_title)).setTextColor(0xFFFFFFFF);
 					((LinearLayout)findViewById(R.id.layout2)).setBackgroundColor(0xFF000000);
 					back.setColorFilter(0xFFFFFFFF);
-					tabLayout.setSelectedTabIndicatorColor(0x0ad6ff);
+					tablayout.setSelectedTabIndicatorColor(0x0ad6ff);
 					tablayout.setTabTextColors(0x0ad6ff, 0xFFFFFFFF);
 					break;
 
