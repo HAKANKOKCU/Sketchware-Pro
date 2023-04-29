@@ -105,7 +105,7 @@ public class AboutModActivity extends AppCompatActivity {
         sharedPref = getSharedPreferences("AboutMod", Activity.MODE_PRIVATE);
 		
 		int nightModeFlags =
-			getContext().getResources().getConfiguration().uiMode &
+			this.getContext().getResources().getConfiguration().uiMode &
 				android.content.res.Configuration.UI_MODE_NIGHT_MASK;
 			switch (nightModeFlags) {
 				case android.content.res.Configuration.UI_MODE_NIGHT_YES:
