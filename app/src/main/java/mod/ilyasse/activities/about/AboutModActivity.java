@@ -75,6 +75,7 @@ public class AboutModActivity extends AppCompatActivity {
     private RequestNetwork.RequestListener requestDataListener;
     private SharedPreferences sharedPref;
     private String discordInviteLink;
+	public boolean dark_mode_enabled = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class AboutModActivity extends AppCompatActivity {
     }
 
     private void initialize() {
+		LinearLayout main_cont = findViewById(R.id.main_container);
         fabLabel = findViewById(R.id.fab_label);
         fab = findViewById(R.id.fab);
         LinearLayout loading = findViewById(R.id.loading_view);
@@ -101,7 +103,29 @@ public class AboutModActivity extends AppCompatActivity {
         loadingDescription = findViewById(R.id.tv_loading_desc);
         requestData = new RequestNetwork(this);
         sharedPref = getSharedPreferences("AboutMod", Activity.MODE_PRIVATE);
+		
+		int nightModeFlags =
+			getContext().getResources().getConfiguration().uiMode &
+				Configuration.UI_MODE_NIGHT_MASK;
+			switch (nightModeFlags) {
+				case Configuration.UI_MODE_NIGHT_YES:
+					dark_mode_enabled = true;
+					main_cont.setBackgroundColor(0xFF000000);
+					loading.setBackgroundColor(0xFF000000);
+					((TextView)findViewById(R.id.tv_loading)).setTextColor(0xFFFFFFFF);
+					((TextView)findViewById(R.id.tv_loading_desc)).setTextColor(0xFFFFFFFF);
+					((TextView)findViewById(R.id.tv_title)).setTextColor(0xFFFFFFFF);
+					((LinearLayout)findViewById(R.id.layout2)).setBackgroundColor(0xFF000000);
+					back.setColorFilter(ContextCompat.getColor(getContext(), 0xFFFFFFFF));
+					break;
 
+				case Configuration.UI_MODE_NIGHT_NO:
+					 break;
+
+				case Configuration.UI_MODE_NIGHT_UNDEFINED:
+					 break;
+			}
+		
         rippleRound(back, "#ffffff", "#1F000000", 90);
         back.setOnClickListener(Helper.getBackPressedClickListener(this));
 
@@ -367,7 +391,7 @@ public class AboutModActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Modder Team";
+                    return "Modders";
 
                 case 1:
                     return "Changelog";
@@ -437,6 +461,10 @@ public class AboutModActivity extends AppCompatActivity {
             } else if (isMainModder instanceof Boolean) {
                 isMainModderBool = (boolean) isMainModder;
             }
+			
+			if (dark_mode_enabled) {
+				holder.title.setTextColor(0xFFFFFFFF);
+			}
 
             Object titleText = modders.get(position).get("title");
             if (isTitle) {
