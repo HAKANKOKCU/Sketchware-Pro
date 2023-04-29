@@ -102,7 +102,7 @@ public class AboutModActivity extends AppCompatActivity {
         loadingTitle = findViewById(R.id.tv_loading);
         loadingDescription = findViewById(R.id.tv_loading_desc);
         requestData = new RequestNetwork(this);
-        sharedPref = getSharedPreferences("AboutMod", Activity.MODE_PRIVATE);
+        sharedPref = getSharedPreferences("AboutMod", Activity.MODE_PRIVATE);/*
 		
 		int nightModeFlags =
 			this.getResources().getConfiguration().uiMode &
@@ -126,7 +126,7 @@ public class AboutModActivity extends AppCompatActivity {
 
 				case android.content.res.Configuration.UI_MODE_NIGHT_UNDEFINED:
 					 break;
-			}
+			}*/
 		
         rippleRound(back, "#ffffff", "#1F000000", 90);
         back.setOnClickListener(Helper.getBackPressedClickListener(this));
