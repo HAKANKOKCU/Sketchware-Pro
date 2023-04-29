@@ -106,9 +106,9 @@ public class AboutModActivity extends AppCompatActivity {
 		
 		int nightModeFlags =
 			getContext().getResources().getConfiguration().uiMode &
-				Configuration.UI_MODE_NIGHT_MASK;
+				android.content.res.Configuration.UI_MODE_NIGHT_MASK;
 			switch (nightModeFlags) {
-				case Configuration.UI_MODE_NIGHT_YES:
+				case android.content.res.Configuration.UI_MODE_NIGHT_YES:
 					dark_mode_enabled = true;
 					main_cont.setBackgroundColor(0xFF000000);
 					loading.setBackgroundColor(0xFF000000);
@@ -119,10 +119,10 @@ public class AboutModActivity extends AppCompatActivity {
 					back.setColorFilter(ContextCompat.getColor(getContext(), 0xFFFFFFFF));
 					break;
 
-				case Configuration.UI_MODE_NIGHT_NO:
+				case android.content.res.Configuration.UI_MODE_NIGHT_NO:
 					 break;
 
-				case Configuration.UI_MODE_NIGHT_UNDEFINED:
+				case android.content.res.Configuration.UI_MODE_NIGHT_UNDEFINED:
 					 break;
 			}
 		
