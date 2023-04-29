@@ -118,7 +118,7 @@ public class AboutModActivity extends AppCompatActivity {
 					((LinearLayout)findViewById(R.id.layout2)).setBackgroundColor(0xFF000000);
 					back.setColorFilter(0xFFFFFFFF);
 					tabLayout.setSelectedTabIndicatorColor(0x0ad6ff);
-					tablayout.setTabTextColors(0x0ad6ff, 0xFFFFFFFF));
+					tablayout.setTabTextColors(0x0ad6ff, 0xFFFFFFFF);
 					break;
 
 				case android.content.res.Configuration.UI_MODE_NIGHT_NO:
