@@ -590,7 +590,7 @@ public class AboutModActivity extends AppCompatActivity {
 				holder.variant.setTextColor(0xFFFFFFFF);
 				holder.releasedOn.setTextColor(0xFFFFFFFF);
 				holder.subtitle.setTextColor(0xFFFFFFFF);
-				holder.viewAdditionalInfo.setTextColor(0xFFFFFFFF);
+				//holder.releasenote.setTextColor(0xFFFFFFFF);
 			}
 
 
