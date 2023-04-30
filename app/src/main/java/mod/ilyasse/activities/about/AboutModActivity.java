@@ -102,7 +102,7 @@ public class AboutModActivity extends AppCompatActivity {
         loadingTitle = findViewById(R.id.tv_loading);
         loadingDescription = findViewById(R.id.tv_loading_desc);
         requestData = new RequestNetwork(this);
-        sharedPref = getSharedPreferences("AboutMod", Activity.MODE_PRIVATE);/*
+        sharedPref = getSharedPreferences("AboutMod", Activity.MODE_PRIVATE);
 		
 		int nightModeFlags =
 			this.getResources().getConfiguration().uiMode &
@@ -115,20 +115,24 @@ public class AboutModActivity extends AppCompatActivity {
 					((TextView)findViewById(R.id.tv_loading)).setTextColor(0xFFFFFFFF);
 					((TextView)findViewById(R.id.tv_loading_desc)).setTextColor(0xFFFFFFFF);
 					((TextView)findViewById(R.id.tv_title)).setTextColor(0xFFFFFFFF);
-					((LinearLayout)findViewById(R.id.layout2)).setBackgroundColor(0xFF000000);
+					changelogRecyclerContainer.setBackgroundColor(0xFF000000);
+					moddersRecyclerContainer.setBackgroundColor(0xFF000000);
+					tablayout.setBackgroundColor(0xFF000000);
 					back.setColorFilter(0xFFFFFFFF);
 					tablayout.setSelectedTabIndicatorColor(0x0ad6ff);
-					tablayout.setTabTextColors(0x0ad6ff, 0xFFFFFFFF);
+					tablayout.setTabTextColors(0xFFFFFFFF, 0xFF0ad6ff);
+					rippleRound(back, "#000000", "#1FFFFFFF", 90);
 					break;
 
 				case android.content.res.Configuration.UI_MODE_NIGHT_NO:
+					rippleRound(back, "#ffffff", "#1F000000", 90);
 					 break;
 
 				case android.content.res.Configuration.UI_MODE_NIGHT_UNDEFINED:
+					rippleRound(back, "#ffffff", "#1F000000", 90);
 					 break;
-			}*/
-		
-        rippleRound(back, "#ffffff", "#1F000000", 90);
+			}
+			
         back.setOnClickListener(Helper.getBackPressedClickListener(this));
 
         class OnScrollListener extends RecyclerView.OnScrollListener {
@@ -466,6 +470,8 @@ public class AboutModActivity extends AppCompatActivity {
 			
 			if (dark_mode_enabled) {
 				holder.title.setTextColor(0xFFFFFFFF);
+				holder.username.setTextColor(0xFFFFFFFF);
+				holder.description.setTextColor(0xFFFFFFFF);
 			}
 
             Object titleText = modders.get(position).get("title");
@@ -578,6 +584,14 @@ public class AboutModActivity extends AppCompatActivity {
             if (previousIsBetaValueDiffers) {
                 holder.variant.setText(isBetaVersion ? "Beta" : "Official");
             }
+			
+			if (dark_mode_enabled) {
+				holder.title.setTextColor(0xFFFFFFFF);
+				holder.variant.setTextColor(0xFFFFFFFF);
+				holder.releasedOn.setTextColor(0xFFFFFFFF);
+				holder.subtitle.setTextColor(0xFFFFFFFF);
+				holder.viewAdditionalInfo.setTextColor(0xFFFFFFFF);
+			}
 
 
             Object releaseDate = release.get("releaseDate");
@@ -613,8 +627,14 @@ public class AboutModActivity extends AppCompatActivity {
             holder.viewAdditionalInfo.setVisibility(showingAdditionalInfo ? View.VISIBLE : View.GONE);
             holder.arrow.setRotation(showingAdditionalInfo ? 0 : 180);
 
-            rippleRound(holder.logBackground, "#ffffff", "#1F000000", 0);
-            rippleRound(holder.arrow, "#ffffff", "#1F000000", 90);
+			if (dark_mode_enabled) {
+				rippleRound(holder.arrow, "#000000", "#1FFFFFFF", 90);
+				rippleRound(holder.logBackground, "#000000", "#1FFFFFFF", 0);
+				holder.arrow.setColorFilter(0xFFFFFFFF);
+			}else {
+				rippleRound(holder.arrow, "#ffffff", "#1F000000", 90);
+				rippleRound(holder.logBackground, "#ffffff", "#1F000000", 0);
+			}
             holder.arrow.setOnClickListener(v -> holder.logBackground.performClick());
 
             holder.logBackground.setOnClickListener(v -> {
